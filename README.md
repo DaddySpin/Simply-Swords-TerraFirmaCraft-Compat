@@ -7,6 +7,8 @@ Requires KubeJS, KubeJS TFC, TerraFirmaCraft, Simply Swords, Simply More and Bet
 
 Attack damage is based off gold weapons as a base and then TerraFirmaCraft adds a bonus for each metal.
 
+also there is the beginning of recipes for all the unique weapons, but is incomplete.
+
 https://www.curseforge.com/minecraft/mc-mods/kubejs
 
 https://www.curseforge.com/minecraft/mc-mods/kubejs-tfc
