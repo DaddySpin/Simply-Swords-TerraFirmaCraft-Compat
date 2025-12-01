@@ -26,17 +26,17 @@ public class ModItems {
     }
 
     private static void registerWeapon(TFCWeaponMetals metal, SimplySwordsWeapons weapon) {
-        String weaponName = metal.getName() + "_" + weapon.getName();
-
-        int damageModifier = (int) (weapon.getAttackDamage() - 3);
-        float speedModifier = weapon.getAttackSpeed() - 4.0f;
+                String weaponName = metal.getName() + "_" + weapon.getName();
+                
+                int damageModifier = (int) (weapon.getAttackDamage() - 3);
+                float speedModifier = weapon.getAttackSpeed() - 4.0f;
 
         WEAPONS.put(weaponName, ITEMS.register(weaponName,
                 () -> new TFCSwordItem(metal, damageModifier, speedModifier,
                         new Item.Properties().rarity(metal.getRarity()))));
 
-        if (weapon.shouldCreateBlade()) {
-            String bladeName = weaponName + "_blade";
+                if (weapon.shouldCreateBlade()) {
+                    String bladeName = weaponName + "_blade";
             BLADES.put(bladeName, ITEMS.register(bladeName,
                     () -> new Item(new Item.Properties().rarity(metal.getRarity()))));
         }

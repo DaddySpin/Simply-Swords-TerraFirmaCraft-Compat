@@ -1,0 +1,11 @@
+{
+  "type": "tfc:heating",
+  "ingredient": {
+    "item": "simplyswords_tfc:bismuth_bronze_warglaive_blade"
+  },
+  "result_fluid": {
+    "amount": 200,
+    "id": "tfc:metal/bismuth_bronze"
+  },
+  "temperature": 1805.0
+}

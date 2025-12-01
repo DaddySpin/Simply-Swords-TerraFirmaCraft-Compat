@@ -1,0 +1,17 @@
+{
+  "type": "tfc:anvil",
+  "apply_bonus": true,
+  "ingredient": {
+    "tag": "c:double_ingots/red_steel"
+  },
+  "result": {
+    "count": 1,
+    "id": "simplyswords_tfc:red_steel_katana_blade"
+  },
+  "rules": [
+    "punch_last",
+    "hit_not_last",
+    "bend_any"
+  ],
+  "tier": 6
+}
