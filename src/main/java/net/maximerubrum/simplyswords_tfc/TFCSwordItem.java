@@ -25,6 +25,6 @@ public class TFCSwordItem extends SwordItem {
                 .add(Attributes.ATTACK_SPEED,
                         new AttributeModifier(BASE_ATTACK_SPEED_ID, speed, AttributeModifier.Operation.ADD_VALUE),
                         EquipmentSlotGroup.MAINHAND)
-                .build();
+            .build();
     }
 }

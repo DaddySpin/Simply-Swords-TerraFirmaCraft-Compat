@@ -1,0 +1,11 @@
+{
+  "type": "tfc:heating",
+  "ingredient": {
+    "item": "simplyswords_tfc:blue_steel_great_spear_blade"
+  },
+  "result_fluid": {
+    "amount": 400,
+    "id": "tfc:metal/blue_steel"
+  },
+  "temperature": 2804.0
+}

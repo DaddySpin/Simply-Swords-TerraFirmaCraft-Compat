@@ -67,7 +67,7 @@ public enum TFCWeaponMetals implements Tier {
 
     @Override
     public float getAttackDamageBonus() { return attackDamage; }
-
+    
     @Override
     public TagKey<Block> getIncorrectBlocksForDrops() {
         // Use appropriate mining level tag based on anvil tier

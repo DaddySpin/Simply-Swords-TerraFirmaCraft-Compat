@@ -15,6 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * Generates TFC-specific recipes: anvil forging, heating, and assembly crafting.
+ */
 public class TFCRecipeProvider implements DataProvider {
     private final PackOutput output;
 
@@ -30,199 +33,137 @@ public class TFCRecipeProvider implements DataProvider {
             for (SimplySwordsWeapons weapon : SimplySwordsWeapons.values()) {
                 String weaponName = metal.getName() + "_" + weapon.getName();
                 String bladeName = weaponName + "_blade";
-                
-                if (RecipeDefinitions.RECIPES.containsKey(weapon.getName())) {
-                    RecipeDefinitions.WeaponRecipeData data = RecipeDefinitions.RECIPES.get(weapon.getName());
-                    
-                    if (weapon.shouldCreateBlade()) {
-                        // Resolve Input Item for Anvil
-                        // If input is "metal_heavy_sheet", user said "tfc_items:metal_heavy_sheet".
-                        // If input is "double_sheet", user said "tfc:metal/double_sheet/metal".
-                        
-                        String inputItem;
-                        if (data.inputType.equals("metal_heavy_sheet")) {
-                            // Assuming namespace tfc_items (or whatever user meant, likely an addon)
-                            // User provided "tfc_items:metal_heavy_sheet"
-                            // Does it have metal suffix? "tfc_items:metal_heavy_sheet" might be generic or "tfc_items:metal_heavy_sheet/copper"?
-                            // Usually TFC addon items follow tfc pattern: "namespace:metal/item/metal_name"
-                            // Or "namespace:item/metal_name_heavy_sheet".
-                            // User prompt: "tfc_items:metal_heavy_sheet". This looks like a single item ID?
-                            // But we need it for EACH metal.
-                            // So it's probably "tfc_items:metal/metal_heavy_sheet/" + metal ??
-                            // Or "tfc_items:metal_heavy_sheet_" + metal?
-                            // I will assume "tfc_items:metal/heavy_sheet/" + metal based on standard TFC paths
-                            // OR "tfc_items:" + metal + "_heavy_sheet".
-                            // Let's try "tfc_items:metal/heavy_sheet/" + metal.
-                            inputItem = "tfc_items:metal/heavy_sheet/" + metal.getName();
-                        } else if (data.inputType.equals("metal_nail") || data.inputType.equals("meta_rivets")) {
-                             inputItem = "tfc_items:metal/" + data.inputType + "/" + metal.getName(); // guessing path
-                        } else {
-                            // Standard TFC
-                            inputItem = "tfc:metal/" + data.inputType + "/" + metal.getName();
-                        }
 
-                        // Anvil Recipe (Blade)
-                        futures.add(saveRecipe(cachedOutput, 
-                            createAnvilJson(bladeName, inputItem, metal.getAnvilTier(), "punch_last", "hit_not_last", "bend_any"),
-                            ResourceLocation.fromNamespaceAndPath(SimplySwordsTFC.MOD_ID, "tfc/anvil/" + metal.getName() + "_" + weapon.getName() + "_blade")));
-
-                        // Heating Blade
-                        int amount = RecipeDefinitions.METAL_VALUES.getOrDefault(data.inputType, 100);
-                        futures.add(saveRecipe(cachedOutput,
-                            createHeatingJson(bladeName, metal.getMeltingPoint(), amount, "tfc:metal/" + metal.getName()),
-                            ResourceLocation.fromNamespaceAndPath(SimplySwordsTFC.MOD_ID, "tfc/heating/" + metal.getName() + "_" + weapon.getName() + "_blade")));
-
-                        // Heating Weapon
-                        futures.add(saveRecipe(cachedOutput,
-                            createHeatingJson(weaponName, metal.getMeltingPoint(), amount, "tfc:metal/" + metal.getName()),
-                            ResourceLocation.fromNamespaceAndPath(SimplySwordsTFC.MOD_ID, "tfc/heating/" + metal.getName() + "_" + weapon.getName())));
-
-                        // Advanced Shaped (Assembly)
-                        // Uses Blade + Handle + Extras (Nails/Rivets)
-                        String handleItem = "tfc:stick"; // Placeholder as per user
-                        
-                        // Extras
-                        List<String> extraItems = new ArrayList<>();
-                        if (data.extras != null) {
-                            for (String extra : data.extras) {
-                                // Resolve extra item ID
-                                // "metal_nail" -> "tfc_items:metal/nail/copper"?
-                                // User said "tfc_items:metal_nail".
-                                // Again, assuming it varies by metal? Or generic?
-                                // If it's metal specific:
-                                extraItems.add("tfc_items:metal/" + extra.replace("metal_", "").replace("meta_", "") + "/" + metal.getName());
-                                // This is a guess on the path structure for the addon.
-                            }
-                        }
-                        
-                        futures.add(saveRecipe(cachedOutput,
-                            createAdvancedShapedJson(weaponName, bladeName, handleItem, extraItems),
-                            ResourceLocation.fromNamespaceAndPath(SimplySwordsTFC.MOD_ID, "tfc/crafting/" + metal.getName() + "_" + weapon.getName())));
-                    }
-                } else if (weapon == SimplySwordsWeapons.CHAKRAM) {
-                    // Chakram logic...
-                     futures.add(saveRecipe(cachedOutput, 
-                        createAnvilJson(weaponName, "tfc:metal/double_ingot/" + metal.getName(), metal.getAnvilTier(), "punch_last", "hit_not_last", "bend_any"),
-                        ResourceLocation.fromNamespaceAndPath(SimplySwordsTFC.MOD_ID, "tfc/anvil/" + metal.getName() + "_chakram")));
+                if (weapon == SimplySwordsWeapons.CHAKRAM) {
+                    // Chakram: no blade, anvil makes weapon directly from double ingot
+                    futures.add(saveRecipe(cachedOutput,
+                            createAnvilRecipe(weaponName, "c:double_ingots/" + metal.getName(), metal.getAnvilTier(),
+                                    "punch_last", "hit_not_last", "bend_any"),
+                            "anvil/" + weaponName));
 
                     futures.add(saveRecipe(cachedOutput,
-                        createHeatingJson(weaponName, metal.getMeltingPoint(), 200, "tfc:metal/" + metal.getName()),
-                        ResourceLocation.fromNamespaceAndPath(SimplySwordsTFC.MOD_ID, "tfc/heating/" + metal.getName() + "_chakram")));
+                            createHeatingRecipe(weaponName, metal.getMeltingPoint(), 200, metal.getName()),
+                            "heating/" + weaponName));
+
+                } else if (weapon.shouldCreateBlade() && RecipeDefinitions.RECIPES.containsKey(weapon.getName())) {
+                    RecipeDefinitions.WeaponRecipeData data = RecipeDefinitions.RECIPES.get(weapon.getName());
+
+                    // Resolve input tag based on input type
+                    String inputTag = resolveInputTag(data.inputType, metal.getName());
+                    int metalAmount = RecipeDefinitions.METAL_VALUES.getOrDefault(data.inputType, 100);
+
+                    // Anvil: Input -> Blade
+                    futures.add(saveRecipe(cachedOutput,
+                            createAnvilRecipe(bladeName, inputTag, metal.getAnvilTier(),
+                                    "punch_last", "hit_not_last", "bend_any"),
+                            "anvil/" + bladeName));
+
+                    // Heating: Blade -> Liquid Metal
+                    futures.add(saveRecipe(cachedOutput,
+                            createHeatingRecipe(bladeName, metal.getMeltingPoint(), metalAmount, metal.getName()),
+                            "heating/" + bladeName));
+
+                    // Heating: Weapon -> Liquid Metal
+                    futures.add(saveRecipe(cachedOutput,
+                            createHeatingRecipe(weaponName, metal.getMeltingPoint(), metalAmount, metal.getName()),
+                            "heating/" + weaponName));
+
+                    // Crafting: Blade + Stick -> Weapon
+                    futures.add(saveRecipe(cachedOutput,
+                            createCraftingRecipe(weaponName, bladeName),
+                            "crafting/" + weaponName));
                 }
             }
         }
-        
+
         return CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
     }
 
-    private CompletableFuture<?> saveRecipe(CachedOutput output, JsonObject json, ResourceLocation id) {
-        Path path = this.output.getOutputFolder().resolve("data/" + id.getNamespace() + "/recipes/" + id.getPath() + ".json");
+    private String resolveInputTag(String inputType, String metalName) {
+        return switch (inputType) {
+            case "ingot" -> "c:ingots/" + metalName;
+            case "double_ingot" -> "c:double_ingots/" + metalName;
+            case "sheet" -> "c:plates/" + metalName;
+            case "double_sheet" -> "c:double_plates/" + metalName;
+            default -> "c:ingots/" + metalName;
+        };
+    }
+
+    private CompletableFuture<?> saveRecipe(CachedOutput output, JsonObject json, String recipePath) {
+        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(SimplySwordsTFC.MOD_ID, recipePath);
+        Path path = this.output.getOutputFolder().resolve("data/" + id.getNamespace() + "/recipe/" + id.getPath() + ".json");
         return DataProvider.saveStable(output, json, path);
     }
 
-    private JsonObject createAnvilJson(String resultItem, String inputTag, int tier, String... rules) {
+    private JsonObject createAnvilRecipe(String resultItem, String inputTag, int tier, String... rules) {
         JsonObject json = new JsonObject();
         json.addProperty("type", "tfc:anvil");
-        
-        JsonObject input = new JsonObject();
-        if (inputTag.contains("tfc:metal/") || inputTag.contains("tfc_items:")) {
-             input.addProperty("item", inputTag); 
-        } else {
-            input.addProperty("tag", inputTag);
-        }
-        json.add("input", input);
+        json.addProperty("apply_bonus", true);
+
+        JsonObject ingredient = new JsonObject();
+        ingredient.addProperty("tag", inputTag);
+        json.add("ingredient", ingredient);
 
         JsonObject result = new JsonObject();
-        result.addProperty("item", SimplySwordsTFC.MOD_ID + ":" + resultItem);
+        result.addProperty("id", SimplySwordsTFC.MOD_ID + ":" + resultItem);
+        result.addProperty("count", 1);
         json.add("result", result);
 
         json.addProperty("tier", tier);
-        
+
         JsonArray rulesArray = new JsonArray();
         for (String r : rules) {
             rulesArray.add(r);
         }
         json.add("rules", rulesArray);
-        
+
         return json;
     }
 
-    private JsonObject createHeatingJson(String inputItem, int temp, int amount, String fluid) {
+    private JsonObject createHeatingRecipe(String inputItem, int temp, int amount, String metalName) {
         JsonObject json = new JsonObject();
         json.addProperty("type", "tfc:heating");
-        
+
         JsonObject ingredient = new JsonObject();
         ingredient.addProperty("item", SimplySwordsTFC.MOD_ID + ":" + inputItem);
         json.add("ingredient", ingredient);
-        
-        json.addProperty("temperature", temp);
-        
-        JsonObject result = new JsonObject();
-        result.addProperty("fluid", fluid);
-        result.addProperty("amount", amount);
-        json.add("result_fluid", result);
-        
+
+        json.addProperty("temperature", (float) temp);
+
+        JsonObject resultFluid = new JsonObject();
+        resultFluid.addProperty("id", "tfc:metal/" + metalName);
+        resultFluid.addProperty("amount", amount);
+        json.add("result_fluid", resultFluid);
+
         return json;
     }
 
-    private JsonObject createAdvancedShapedJson(String resultItem, String bladeItem, String handleItem, List<String> extras) {
+    private JsonObject createCraftingRecipe(String resultItem, String bladeItem) {
         JsonObject json = new JsonObject();
-        json.addProperty("type", "tfc:advanced_shaped_crafting");
-        
+        json.addProperty("type", "minecraft:crafting_shaped");
+
         JsonArray pattern = new JsonArray();
-        // Pattern depends on extras.
-        // Basic: 
-        //  A 
-        // B
-        
-        // With Rivet/Nail (C):
-        //  A
-        // CB
-        
-        // Or:
-        //  A
-        // C
-        // B
-        
-        // Let's try a consistent vertical pattern.
-        // A: Blade
-        // B: Handle
-        // C: Extra
-        
-        if (extras != null && !extras.isEmpty()) {
-            pattern.add(" A ");
-            pattern.add(" C "); // Rivet/Nail in middle?
-            pattern.add(" B ");
-        } else {
-            pattern.add(" A ");
-            pattern.add(" B ");
-            pattern.add("   ");
-        }
-        
+        pattern.add("A");
+        pattern.add("B");
         json.add("pattern", pattern);
-        
+
         JsonObject key = new JsonObject();
-        
-        JsonObject A = new JsonObject();
-        A.addProperty("item", SimplySwordsTFC.MOD_ID + ":" + bladeItem);
-        key.add("A", A);
-        
-        JsonObject B = new JsonObject();
-        B.addProperty("item", handleItem);
-        key.add("B", B);
-        
-        if (extras != null && !extras.isEmpty()) {
-            JsonObject C = new JsonObject();
-            C.addProperty("item", extras.get(0)); // Use first extra
-            key.add("C", C);
-        }
-        
+
+        JsonObject bladeKey = new JsonObject();
+        bladeKey.addProperty("item", SimplySwordsTFC.MOD_ID + ":" + bladeItem);
+        key.add("A", bladeKey);
+
+        JsonObject stickKey = new JsonObject();
+        stickKey.addProperty("tag", "c:rods/wooden");
+        key.add("B", stickKey);
+
         json.add("key", key);
-        
+
         JsonObject result = new JsonObject();
-        result.addProperty("item", SimplySwordsTFC.MOD_ID + ":" + resultItem);
+        result.addProperty("id", SimplySwordsTFC.MOD_ID + ":" + resultItem);
+        result.addProperty("count", 1);
         json.add("result", result);
-        
+
         return json;
     }
 

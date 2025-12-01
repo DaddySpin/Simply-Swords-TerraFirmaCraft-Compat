@@ -52,22 +52,22 @@ public class ModItemModelProvider extends ItemModelProvider {
      */
     private void registerStandardWeaponModel(String weaponName, SimplySwordsWeapons weapon) {
         ResourceLocation parentLoc = resolveParentModel(weapon.getModelParent());
-
-        getBuilder(weaponName)
+                    
+                    getBuilder(weaponName)
                 .parent(new ModelFile.UncheckedModelFile(parentLoc))
-                .texture("layer0", ResourceLocation.fromNamespaceAndPath(SimplySwordsTFC.MOD_ID, "item/simply_swords_templates/blade_" + weapon.getName()))
-                .texture("layer1", ResourceLocation.fromNamespaceAndPath(SimplySwordsTFC.MOD_ID, "item/simply_swords_templates/handle_" + weapon.getName()));
-    }
+                            .texture("layer0", ResourceLocation.fromNamespaceAndPath(SimplySwordsTFC.MOD_ID, "item/simply_swords_templates/blade_" + weapon.getName()))
+                            .texture("layer1", ResourceLocation.fromNamespaceAndPath(SimplySwordsTFC.MOD_ID, "item/simply_swords_templates/handle_" + weapon.getName()));
+                }
 
     /**
      * Registers a blade item model (crafting component).
      */
     private void registerBladeModel(String weaponName, SimplySwordsWeapons weapon) {
         String bladeName = weaponName + "_blade";
-        getBuilder(bladeName)
-                .parent(getExistingFile(ResourceLocation.withDefaultNamespace("item/generated")))
-                .texture("layer0", ResourceLocation.fromNamespaceAndPath(SimplySwordsTFC.MOD_ID, "item/simply_swords_blades/blade_" + weapon.getName()));
-    }
+                    getBuilder(bladeName)
+                            .parent(getExistingFile(ResourceLocation.withDefaultNamespace("item/generated")))
+                            .texture("layer0", ResourceLocation.fromNamespaceAndPath(SimplySwordsTFC.MOD_ID, "item/simply_swords_blades/blade_" + weapon.getName()));
+                }
 
     /**
      * Resolves the parent model location, handling legacy namespace conversions.
