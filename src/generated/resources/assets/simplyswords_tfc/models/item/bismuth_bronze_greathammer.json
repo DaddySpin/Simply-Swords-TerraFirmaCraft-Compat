@@ -1,0 +1,6 @@
+{
+  "parent": "simplyswords_tfc:item/template_reworked_greathammer_tintable",
+  "textures": {
+    "texture": "simplyswords_tfc:item/simply_swords_templates/greathammer"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "tfc:heating",
+  "ingredient": {
+    "item": "simplyswords_tfc:wrought_iron_backhand_blade"
+  },
+  "result_fluid": {
+    "amount": 100,
+    "fluid": "tfc:metal/wrought_iron"
+  },
+  "temperature": 2795
+}

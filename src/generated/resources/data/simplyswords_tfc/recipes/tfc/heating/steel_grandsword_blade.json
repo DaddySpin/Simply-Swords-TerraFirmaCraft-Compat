@@ -1,0 +1,11 @@
+{
+  "type": "tfc:heating",
+  "ingredient": {
+    "item": "simplyswords_tfc:steel_grandsword_blade"
+  },
+  "result_fluid": {
+    "amount": 400,
+    "fluid": "tfc:metal/steel"
+  },
+  "temperature": 2804
+}

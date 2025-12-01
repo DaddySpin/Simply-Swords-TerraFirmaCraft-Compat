@@ -1,0 +1,15 @@
+{
+  "type": "tfc:anvil",
+  "input": {
+    "item": "tfc:metal/ingot/red_steel"
+  },
+  "result": {
+    "item": "simplyswords_tfc:red_steel_deer_horns_blade"
+  },
+  "rules": [
+    "punch_last",
+    "hit_not_last",
+    "bend_any"
+  ],
+  "tier": 6
+}

@@ -1,0 +1,11 @@
+{
+  "type": "tfc:heating",
+  "ingredient": {
+    "item": "simplyswords_tfc:bronze_scythe"
+  },
+  "result_fluid": {
+    "amount": 200,
+    "fluid": "tfc:metal/bronze"
+  },
+  "temperature": 1742
+}

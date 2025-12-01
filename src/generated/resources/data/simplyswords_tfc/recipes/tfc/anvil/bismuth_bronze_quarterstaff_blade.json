@@ -1,0 +1,15 @@
+{
+  "type": "tfc:anvil",
+  "input": {
+    "item": "tfc:metal/double_ingot/bismuth_bronze"
+  },
+  "result": {
+    "item": "simplyswords_tfc:bismuth_bronze_quarterstaff_blade"
+  },
+  "rules": [
+    "punch_last",
+    "hit_not_last",
+    "bend_any"
+  ],
+  "tier": 2
+}

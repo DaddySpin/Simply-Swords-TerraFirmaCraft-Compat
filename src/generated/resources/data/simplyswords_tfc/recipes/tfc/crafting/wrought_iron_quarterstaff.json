@@ -1,0 +1,22 @@
+{
+  "type": "tfc:advanced_shaped_crafting",
+  "key": {
+    "A": {
+      "item": "simplyswords_tfc:wrought_iron_quarterstaff_blade"
+    },
+    "B": {
+      "item": "tfc:stick"
+    },
+    "C": {
+      "item": "tfc_items:metal/nail/wrought_iron"
+    }
+  },
+  "pattern": [
+    " A ",
+    " C ",
+    " B "
+  ],
+  "result": {
+    "item": "simplyswords_tfc:wrought_iron_quarterstaff"
+  }
+}

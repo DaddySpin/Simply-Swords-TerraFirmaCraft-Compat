@@ -1,0 +1,11 @@
+{
+  "type": "tfc:heating",
+  "ingredient": {
+    "item": "simplyswords_tfc:black_bronze_great_spear"
+  },
+  "result_fluid": {
+    "amount": 400,
+    "fluid": "tfc:metal/black_bronze"
+  },
+  "temperature": 1958
+}

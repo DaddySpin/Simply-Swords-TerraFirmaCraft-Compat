@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "simplyswords_tfc:item/simply_swords_templates/blade_dagger",
+    "layer1": "simplyswords_tfc:item/simply_swords_templates/handle_dagger"
+  }
+}

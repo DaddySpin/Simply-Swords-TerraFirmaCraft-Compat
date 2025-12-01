@@ -1,0 +1,7 @@
+{
+  "parent": "simplyswords:item/big_handheld",
+  "textures": {
+    "layer0": "simplyswords_tfc:item/simply_swords_templates/blade_glaive",
+    "layer1": "simplyswords_tfc:item/simply_swords_templates/handle_glaive"
+  }
+}

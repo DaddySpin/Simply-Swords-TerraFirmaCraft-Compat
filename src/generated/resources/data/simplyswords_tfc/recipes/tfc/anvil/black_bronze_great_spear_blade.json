@@ -1,0 +1,15 @@
+{
+  "type": "tfc:anvil",
+  "input": {
+    "item": "tfc:metal/double_sheet/black_bronze"
+  },
+  "result": {
+    "item": "simplyswords_tfc:black_bronze_great_spear_blade"
+  },
+  "rules": [
+    "punch_last",
+    "hit_not_last",
+    "bend_any"
+  ],
+  "tier": 2
+}

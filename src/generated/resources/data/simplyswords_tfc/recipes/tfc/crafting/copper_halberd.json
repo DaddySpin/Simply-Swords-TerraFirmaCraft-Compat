@@ -1,0 +1,22 @@
+{
+  "type": "tfc:advanced_shaped_crafting",
+  "key": {
+    "A": {
+      "item": "simplyswords_tfc:copper_halberd_blade"
+    },
+    "B": {
+      "item": "tfc:stick"
+    },
+    "C": {
+      "item": "tfc_items:metal/nail/copper"
+    }
+  },
+  "pattern": [
+    " A ",
+    " C ",
+    " B "
+  ],
+  "result": {
+    "item": "simplyswords_tfc:copper_halberd"
+  }
+}

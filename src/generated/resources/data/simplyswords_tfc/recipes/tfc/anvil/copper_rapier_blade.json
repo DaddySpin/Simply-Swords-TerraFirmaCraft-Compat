@@ -1,0 +1,15 @@
+{
+  "type": "tfc:anvil",
+  "input": {
+    "item": "tfc:metal/double_ingot/copper"
+  },
+  "result": {
+    "item": "simplyswords_tfc:copper_rapier_blade"
+  },
+  "rules": [
+    "punch_last",
+    "hit_not_last",
+    "bend_any"
+  ],
+  "tier": 1
+}

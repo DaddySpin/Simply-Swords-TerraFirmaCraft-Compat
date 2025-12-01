@@ -1,0 +1,15 @@
+{
+  "type": "tfc:anvil",
+  "input": {
+    "item": "tfc:metal/sheet/wrought_iron"
+  },
+  "result": {
+    "item": "simplyswords_tfc:wrought_iron_spear_blade"
+  },
+  "rules": [
+    "punch_last",
+    "hit_not_last",
+    "bend_any"
+  ],
+  "tier": 3
+}

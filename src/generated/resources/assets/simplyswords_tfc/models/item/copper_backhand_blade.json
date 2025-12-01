@@ -1,0 +1,7 @@
+{
+  "parent": "simplyswords:item/template_longdagger",
+  "textures": {
+    "layer0": "simplyswords_tfc:item/simply_swords_templates/blade_backhand_blade",
+    "layer1": "simplyswords_tfc:item/simply_swords_templates/handle_backhand_blade"
+  }
+}

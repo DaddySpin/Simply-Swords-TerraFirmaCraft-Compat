@@ -1,0 +1,22 @@
+{
+  "type": "tfc:advanced_shaped_crafting",
+  "key": {
+    "A": {
+      "item": "simplyswords_tfc:bismuth_bronze_longsword_blade"
+    },
+    "B": {
+      "item": "tfc:stick"
+    },
+    "C": {
+      "item": "tfc_items:metal/rivets/bismuth_bronze"
+    }
+  },
+  "pattern": [
+    " A ",
+    " C ",
+    " B "
+  ],
+  "result": {
+    "item": "simplyswords_tfc:bismuth_bronze_longsword"
+  }
+}
