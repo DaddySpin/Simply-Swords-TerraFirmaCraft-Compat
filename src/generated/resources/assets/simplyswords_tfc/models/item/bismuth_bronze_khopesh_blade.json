@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "simplyswords_tfc:item/simply_swords_blades/blade_khopesh"
+  }
+}

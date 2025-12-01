@@ -1,0 +1,22 @@
+{
+  "type": "tfc:advanced_shaped_crafting",
+  "key": {
+    "A": {
+      "item": "simplyswords_tfc:black_bronze_cutlass_blade"
+    },
+    "B": {
+      "item": "tfc:stick"
+    },
+    "C": {
+      "item": "tfc_items:metal/rivets/black_bronze"
+    }
+  },
+  "pattern": [
+    " A ",
+    " C ",
+    " B "
+  ],
+  "result": {
+    "item": "simplyswords_tfc:black_bronze_cutlass"
+  }
+}

@@ -1,0 +1,39 @@
+# Gradle
+.gradle/
+build/
+gradle/wrapper/gradle-wrapper.jar
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.settings/
+.classpath
+.project
+bin/
+out/
+
+# System
+.DS_Store
+Thumbs.db
+*.log
+
+# Minecraft/NeoForge
+run/
+logs/
+crash-reports/
+
+# Dependencies (download manually - see README)
+libs/*.jar
+libs/**/*.jar
+
+# Cursor/AI tools
+agent-tools/
+*.plan.md
+
+# Misc
+*.bak
+*.tmp
+*~

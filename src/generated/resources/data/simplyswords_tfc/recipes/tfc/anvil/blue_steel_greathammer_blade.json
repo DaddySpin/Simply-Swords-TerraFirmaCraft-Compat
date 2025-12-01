@@ -1,0 +1,15 @@
+{
+  "type": "tfc:anvil",
+  "input": {
+    "item": "tfc_items:metal/heavy_sheet/blue_steel"
+  },
+  "result": {
+    "item": "simplyswords_tfc:blue_steel_greathammer_blade"
+  },
+  "rules": [
+    "punch_last",
+    "hit_not_last",
+    "bend_any"
+  ],
+  "tier": 6
+}

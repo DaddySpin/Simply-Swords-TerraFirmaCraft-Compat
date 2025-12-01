@@ -1,0 +1,7 @@
+{
+  "parent": "simplyswords:item/template_katana",
+  "textures": {
+    "layer0": "simplyswords_tfc:item/simply_swords_templates/blade_katana",
+    "layer1": "simplyswords_tfc:item/simply_swords_templates/handle_katana"
+  }
+}

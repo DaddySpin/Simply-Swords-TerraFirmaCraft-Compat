@@ -1,0 +1,46 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="simplyswords_tfc"
+version="1.0.0"
+displayName="Simply Swords TFC Compat"
+authors="MaximeRubrum"
+description="Compatibility patch for TFC and Simply Swords"
+logoFile="logo.png"
+
+[[dependencies.simplyswords_tfc]]
+modId="neoforge"
+type="required"
+versionRange="[21.1,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.simplyswords_tfc]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1,1.22)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.simplyswords_tfc]]
+modId="tfc"
+type="required"
+versionRange="[4.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.simplyswords_tfc]]
+modId="simplyswords"
+type="required"
+versionRange="[1.56,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.simplyswords_tfc]]
+modId="tfc_items"
+type="required"
+versionRange="[1.0,)"
+ordering="AFTER"
+side="BOTH"

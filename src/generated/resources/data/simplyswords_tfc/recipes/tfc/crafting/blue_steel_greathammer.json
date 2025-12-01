@@ -1,0 +1,22 @@
+{
+  "type": "tfc:advanced_shaped_crafting",
+  "key": {
+    "A": {
+      "item": "simplyswords_tfc:blue_steel_greathammer_blade"
+    },
+    "B": {
+      "item": "tfc:stick"
+    },
+    "C": {
+      "item": "tfc_items:metal/rivets/blue_steel"
+    }
+  },
+  "pattern": [
+    " A ",
+    " C ",
+    " B "
+  ],
+  "result": {
+    "item": "simplyswords_tfc:blue_steel_greathammer"
+  }
+}

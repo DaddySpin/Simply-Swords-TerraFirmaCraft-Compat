@@ -1,0 +1,89 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'net.neoforged.moddev' version '1.0.15'
+}
+
+tasks.named('wrapper', Wrapper).configure {
+    distributionType = Wrapper.DistributionType.BIN
+}
+
+version = project.mod_version
+group = project.mod_group_id
+
+repositories {
+    mavenLocal()
+    flatDir {
+        dirs 'libs'
+    }
+    maven {
+        url "https://maven.neoforged.net/releases"
+    }
+    maven {
+        url "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+    maven {
+        // TFC / Patchouli
+        url "https://maven.blamejared.com"
+    }
+    maven {
+        // Architectury
+        url "https://maven.architectury.dev/"
+    }
+    maven {
+        // Kotlin for Forge
+        url "https://thedarkcolour.github.io/KotlinForForge/"
+    }
+}
+
+neoForge {
+    version = project.neoforge_version
+
+    mods {
+        "${mod_id}" {
+            sourceSet sourceSets.main
+        }
+    }
+
+    runs {
+        client {
+            client()
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+
+        server {
+            server()
+            programArgument '--nogui'
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+
+        data {
+            data()
+            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+        }
+    }
+}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+dependencies {
+    // Main Mods
+    implementation name: 'TerraFirmaCraft-NeoForge-1.21.1-4.0.11-beta'
+    implementation name: 'simplyswords-neoforge-1.62.0-1.21.1'
+    implementation name: 'TFC-items-1.21.1-neoforge-1.2.1'
+
+    // Transitive Dependencies (Manual from libs)
+    implementation name: 'Patchouli-1.21.1-92-NEOFORGE'
+    implementation name: 'fzzy_config-0.7.3+1.21+neoforge'
+    implementation name: 'architectury-13.0.8-neoforge'
+    
+    // Kotlin For Forge (Manual from libs)
+    implementation name: 'kotlinforforge-5.10.0-all'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}

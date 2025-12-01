@@ -1,0 +1,7 @@
+{
+  "parent": "simplyswords:item/template_twinblade",
+  "textures": {
+    "layer0": "simplyswords_tfc:item/simply_swords_templates/blade_quarterstaff",
+    "layer1": "simplyswords_tfc:item/simply_swords_templates/handle_quarterstaff"
+  }
+}

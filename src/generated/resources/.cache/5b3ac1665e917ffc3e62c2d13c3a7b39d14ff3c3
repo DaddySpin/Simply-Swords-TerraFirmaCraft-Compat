@@ -1,0 +1,26 @@
+// 1.21.1	2025-12-01T13:59:28.126718712	Tags for minecraft:item mod id simplyswords_tfc
+348db77523ca98f628bc8b38b107098cc0526f1b data/simplymore/tags/item/weapon_types/backhand_blades.json
+625a69350fc3b4f36af9ea76303b12fdbfcc035d data/simplymore/tags/item/weapon_types/chakrams.json
+a6181316b83de29cbd1565a0ece24c1e3ec8fc58 data/simplymore/tags/item/weapon_types/claymores.json
+aafd87a3b8dd9547e94ae10ab9dd8f6fe896521b data/simplymore/tags/item/weapon_types/cutlasses.json
+11b6c243778f52b921f2d712d32b57a233936d8f data/simplymore/tags/item/weapon_types/daggers.json
+681c6ce85878760c13caf887496bf9494742ff66 data/simplymore/tags/item/weapon_types/deer_horns.json
+56a5574decd36566e5667c4523731d0be8852ba0 data/simplymore/tags/item/weapon_types/glaives.json
+530b19d12072c688e4b9fe6a62b5d3f2225b7131 data/simplymore/tags/item/weapon_types/grandswords.json
+c38b0c7fb6ace27d4d781532b72d4bfc2bac4aa1 data/simplymore/tags/item/weapon_types/great_katanas.json
+7e466a79b4f773f7dd1d8104847e19ae7ddb0cf6 data/simplymore/tags/item/weapon_types/great_spears.json
+eab00e3c0acdf7df594b954e3775d100c5ffce80 data/simplymore/tags/item/weapon_types/greataxes.json
+4dbc8ab60caaafa4b3e75346d89d3d1e90c1fda8 data/simplymore/tags/item/weapon_types/greathammers.json
+d00f3eecccfb2e148da12b3620c762e38f03c5e8 data/simplymore/tags/item/weapon_types/halberds.json
+bafd2366f36b121549c053b3e750177b67e27947 data/simplymore/tags/item/weapon_types/katanas.json
+8a968b0bf96edad7688b555ef82c2bb6efb9a6e9 data/simplymore/tags/item/weapon_types/khopeshs.json
+a74c7df65b49eb91b9dac4e5d866e8af67987cf4 data/simplymore/tags/item/weapon_types/lances.json
+4fb9562b2f18e32873abe1afe64e19d07c19e3a3 data/simplymore/tags/item/weapon_types/longswords.json
+4a84216e0518678b28e06ef8c1bcc43e70ad30e4 data/simplymore/tags/item/weapon_types/pernachs.json
+bbb9b37db3df3ea168a1cd11d7cd2d513adc1fc3 data/simplymore/tags/item/weapon_types/quarterstaffs.json
+9b439eb3f7c530c620fcda9994464c0a040dc0ff data/simplymore/tags/item/weapon_types/rapiers.json
+55fc7fa185ccea8bb1f4ad430c2b49f4bf3331c3 data/simplymore/tags/item/weapon_types/sais.json
+6fe32991965df64958f18cf597cedfef561a3618 data/simplymore/tags/item/weapon_types/scythes.json
+a5a0067c9c21ec899931dcebb3e1677f4505bd95 data/simplymore/tags/item/weapon_types/spears.json
+ad85f0a25add403d7f13bd9266d7b478f6ade958 data/simplymore/tags/item/weapon_types/twinblades.json
+ce0105ddab589a5732db8a1318f340a6b77dea4d data/simplymore/tags/item/weapon_types/warglaives.json

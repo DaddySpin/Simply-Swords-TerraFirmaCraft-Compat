@@ -1,0 +1,7 @@
+{
+  "parent": "simplyswords:item/template_claymore",
+  "textures": {
+    "layer0": "simplyswords_tfc:item/simply_swords_templates/blade_grandsword",
+    "layer1": "simplyswords_tfc:item/simply_swords_templates/handle_grandsword"
+  }
+}
