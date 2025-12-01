@@ -1,4 +1,4 @@
-package net.maximerubrum.simplyswords_tfc;
+package net.simplyswordstfc;
 
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -37,3 +37,5 @@ public class ClientSetup {
         }
     }
 }
+
+

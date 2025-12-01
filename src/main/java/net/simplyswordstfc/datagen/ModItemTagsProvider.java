@@ -1,8 +1,9 @@
-package net.maximerubrum.simplyswords_tfc.datagen;
+package net.simplyswordstfc.datagen;
 
-import net.maximerubrum.simplyswords_tfc.SimplySwordsTFC;
-import net.maximerubrum.simplyswords_tfc.SimplySwordsWeapons;
-import net.maximerubrum.simplyswords_tfc.TFCWeaponMetals;
+import net.simplyswordstfc.ModItems;
+import net.simplyswordstfc.SimplySwordsTFC;
+import net.simplyswordstfc.SimplySwordsWeapons;
+import net.simplyswordstfc.TFCWeaponMetals;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -39,10 +40,12 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 
                 TagKey<Item> typeTag = ItemTags.create(ResourceLocation.fromNamespaceAndPath("simplymore", "weapon_types/" + tagName));
                 
-                if (net.maximerubrum.simplyswords_tfc.ModItems.WEAPONS.containsKey(weaponName)) {
-                    tag(typeTag).add(net.maximerubrum.simplyswords_tfc.ModItems.WEAPONS.get(weaponName).get());
+                if (ModItems.WEAPONS.containsKey(weaponName)) {
+                    tag(typeTag).add(ModItems.WEAPONS.get(weaponName).get());
                 }
             }
         }
     }
 }
+
+

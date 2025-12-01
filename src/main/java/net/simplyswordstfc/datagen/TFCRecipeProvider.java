@@ -1,10 +1,10 @@
-package net.maximerubrum.simplyswords_tfc.datagen;
+package net.simplyswordstfc.datagen;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import net.maximerubrum.simplyswords_tfc.SimplySwordsTFC;
-import net.maximerubrum.simplyswords_tfc.SimplySwordsWeapons;
-import net.maximerubrum.simplyswords_tfc.TFCWeaponMetals;
+import net.simplyswordstfc.SimplySwordsTFC;
+import net.simplyswordstfc.SimplySwordsWeapons;
+import net.simplyswordstfc.TFCWeaponMetals;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
@@ -172,3 +172,5 @@ public class TFCRecipeProvider implements DataProvider {
         return "TFC Recipes";
     }
 }
+
+

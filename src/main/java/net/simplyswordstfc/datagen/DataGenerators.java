@@ -1,6 +1,6 @@
-package net.maximerubrum.simplyswords_tfc.datagen;
+package net.simplyswordstfc.datagen;
 
-import net.maximerubrum.simplyswords_tfc.SimplySwordsTFC;
+import net.simplyswordstfc.SimplySwordsTFC;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
@@ -23,3 +23,5 @@ public class DataGenerators {
         generator.addProvider(event.includeServer(), new ModItemTagsProvider(packOutput, lookupProvider, blockTags.contentsGetter(), existingFileHelper));
     }
 }
+
+

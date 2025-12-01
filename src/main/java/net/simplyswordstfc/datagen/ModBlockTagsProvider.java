@@ -1,6 +1,6 @@
-package net.maximerubrum.simplyswords_tfc.datagen;
+package net.simplyswordstfc.datagen;
 
-import net.maximerubrum.simplyswords_tfc.SimplySwordsTFC;
+import net.simplyswordstfc.SimplySwordsTFC;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;

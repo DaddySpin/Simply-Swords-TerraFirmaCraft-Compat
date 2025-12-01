@@ -1,4 +1,4 @@
-package net.maximerubrum.simplyswords_tfc;
+package net.simplyswordstfc;
 
 /**
  * Defines all Simply Swords weapon types with their stats and model configurations.
@@ -54,3 +54,5 @@ public enum SimplySwordsWeapons {
     public boolean shouldCreateBlade() { return createBlade; }
     public boolean isGreathammer() { return isGreathammer; }
 }
+
+

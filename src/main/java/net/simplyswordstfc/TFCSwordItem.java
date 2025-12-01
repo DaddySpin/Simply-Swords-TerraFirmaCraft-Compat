@@ -1,4 +1,4 @@
-package net.maximerubrum.simplyswords_tfc;
+package net.simplyswordstfc;
 
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -28,3 +28,5 @@ public class TFCSwordItem extends SwordItem {
             .build();
     }
 }
+
+

@@ -1,4 +1,4 @@
-package net.maximerubrum.simplyswords_tfc;
+package net.simplyswordstfc;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -85,3 +85,5 @@ public enum TFCWeaponMetals implements Tier {
     @Override
     public Ingredient getRepairIngredient() { return repairIngredient.get(); }
 }
+
+

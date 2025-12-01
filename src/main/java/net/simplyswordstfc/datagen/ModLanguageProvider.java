@@ -1,8 +1,8 @@
-package net.maximerubrum.simplyswords_tfc.datagen;
+package net.simplyswordstfc.datagen;
 
-import net.maximerubrum.simplyswords_tfc.SimplySwordsTFC;
-import net.maximerubrum.simplyswords_tfc.SimplySwordsWeapons;
-import net.maximerubrum.simplyswords_tfc.TFCWeaponMetals;
+import net.simplyswordstfc.SimplySwordsTFC;
+import net.simplyswordstfc.SimplySwordsWeapons;
+import net.simplyswordstfc.TFCWeaponMetals;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
@@ -58,4 +58,5 @@ public class ModLanguageProvider extends LanguageProvider {
         return result.toString();
     }
 }
+
 

@@ -1,4 +1,4 @@
-package net.maximerubrum.simplyswords_tfc;
+package net.simplyswordstfc;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SwordItem;
@@ -42,3 +42,4 @@ public class ModItems {
         }
     }
 }
+

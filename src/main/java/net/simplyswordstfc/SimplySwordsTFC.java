@@ -1,4 +1,4 @@
-package net.maximerubrum.simplyswords_tfc;
+package net.simplyswordstfc;
 
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -12,3 +12,4 @@ public class SimplySwordsTFC {
         ModCreativeTabs.CREATIVE_MODE_TABS.register(modEventBus);
     }
 }
+
