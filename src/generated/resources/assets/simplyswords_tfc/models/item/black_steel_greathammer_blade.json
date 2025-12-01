@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
+  "parent": "simplyswords_tfc:item/template_greathammer_blade_tintable",
   "textures": {
-    "layer0": "simplyswords_tfc:item/simply_swords_blades/blade_greathammer"
+    "texture": "simplyswords_tfc:item/simply_swords_templates/greathammer"
   }
 }
