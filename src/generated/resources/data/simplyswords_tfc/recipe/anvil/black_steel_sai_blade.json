@@ -2,7 +2,7 @@
   "type": "tfc:anvil",
   "apply_bonus": true,
   "ingredient": {
-    "tag": "c:ingots/black_steel"
+    "item": "tfc:metal/ingot/black_steel"
   },
   "result": {
     "count": 1,

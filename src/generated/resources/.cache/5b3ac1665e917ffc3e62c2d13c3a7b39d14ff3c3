@@ -1,4 +1,7 @@
-// 1.21.1	2025-12-01T13:59:28.126718712	Tags for minecraft:item mod id simplyswords_tfc
+// 1.21.1	2025-12-01T23:22:18.346361944	Tags for minecraft:item mod id simplyswords_tfc
+45babd9f3b499ee07a1f5973352d62cd9e80b982 data/c/tags/item/tools.json
+45babd9f3b499ee07a1f5973352d62cd9e80b982 data/c/tags/item/tools/melee_weapons.json
+45babd9f3b499ee07a1f5973352d62cd9e80b982 data/c/tags/item/tools/swords.json
 348db77523ca98f628bc8b38b107098cc0526f1b data/simplymore/tags/item/weapon_types/backhand_blades.json
 625a69350fc3b4f36af9ea76303b12fdbfcc035d data/simplymore/tags/item/weapon_types/chakrams.json
 a6181316b83de29cbd1565a0ece24c1e3ec8fc58 data/simplymore/tags/item/weapon_types/claymores.json
@@ -24,3 +27,6 @@ bbb9b37db3df3ea168a1cd11d7cd2d513adc1fc3 data/simplymore/tags/item/weapon_types/
 a5a0067c9c21ec899931dcebb3e1677f4505bd95 data/simplymore/tags/item/weapon_types/spears.json
 ad85f0a25add403d7f13bd9266d7b478f6ade958 data/simplymore/tags/item/weapon_types/twinblades.json
 ce0105ddab589a5732db8a1318f340a6b77dea4d data/simplymore/tags/item/weapon_types/warglaives.json
+5745f825b6bd0c8cde61a1fbb21e7244b620b5d6 data/tfc/tags/item/deals_crushing_damage.json
+dbd28f97846892daba040ce884d5cd42dd66fe59 data/tfc/tags/item/deals_piercing_damage.json
+ee22fdc66cd9945a026a7d7feb29c86c289425d5 data/tfc/tags/item/deals_slashing_damage.json

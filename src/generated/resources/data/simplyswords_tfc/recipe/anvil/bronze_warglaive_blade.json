@@ -2,7 +2,7 @@
   "type": "tfc:anvil",
   "apply_bonus": true,
   "ingredient": {
-    "tag": "c:double_ingots/bronze"
+    "item": "tfc:metal/double_ingot/bronze"
   },
   "result": {
     "count": 1,

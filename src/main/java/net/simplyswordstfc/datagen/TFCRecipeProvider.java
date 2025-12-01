@@ -37,7 +37,7 @@ public class TFCRecipeProvider implements DataProvider {
                 if (weapon == SimplySwordsWeapons.CHAKRAM) {
                     // Chakram: no blade, anvil makes weapon directly from double ingot
                     futures.add(saveRecipe(cachedOutput,
-                            createAnvilRecipe(weaponName, "c:double_ingots/" + metal.getName(), metal.getAnvilTier(),
+                            createAnvilRecipeWithItem(weaponName, "tfc:metal/double_ingot/" + metal.getName(), metal.getAnvilTier(),
                                     "punch_last", "hit_not_last", "bend_any"),
                             "anvil/" + weaponName));
 
@@ -48,13 +48,13 @@ public class TFCRecipeProvider implements DataProvider {
                 } else if (weapon.shouldCreateBlade() && RecipeDefinitions.RECIPES.containsKey(weapon.getName())) {
                     RecipeDefinitions.WeaponRecipeData data = RecipeDefinitions.RECIPES.get(weapon.getName());
 
-                    // Resolve input tag based on input type
-                    String inputTag = resolveInputTag(data.inputType, metal.getName());
+                    // Resolve input item based on input type
+                    String inputItem = resolveInputItem(data.inputType, metal.getName());
                     int metalAmount = RecipeDefinitions.METAL_VALUES.getOrDefault(data.inputType, 100);
 
                     // Anvil: Input -> Blade
                     futures.add(saveRecipe(cachedOutput,
-                            createAnvilRecipe(bladeName, inputTag, metal.getAnvilTier(),
+                            createAnvilRecipeWithItem(bladeName, inputItem, metal.getAnvilTier(),
                                     "punch_last", "hit_not_last", "bend_any"),
                             "anvil/" + bladeName));
 
@@ -79,13 +79,17 @@ public class TFCRecipeProvider implements DataProvider {
         return CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
     }
 
-    private String resolveInputTag(String inputType, String metalName) {
+    /**
+     * Resolves the input item ID for TFC metal items.
+     * TFC uses tfc:metal/<type>/<metal> format for metal items.
+     */
+    private String resolveInputItem(String inputType, String metalName) {
         return switch (inputType) {
-            case "ingot" -> "c:ingots/" + metalName;
-            case "double_ingot" -> "c:double_ingots/" + metalName;
-            case "sheet" -> "c:plates/" + metalName;
-            case "double_sheet" -> "c:double_plates/" + metalName;
-            default -> "c:ingots/" + metalName;
+            case "ingot" -> "tfc:metal/ingot/" + metalName;
+            case "double_ingot" -> "tfc:metal/double_ingot/" + metalName;
+            case "sheet" -> "tfc:metal/sheet/" + metalName;
+            case "double_sheet" -> "tfc:metal/double_sheet/" + metalName;
+            default -> "tfc:metal/ingot/" + metalName;
         };
     }
 
@@ -95,13 +99,13 @@ public class TFCRecipeProvider implements DataProvider {
         return DataProvider.saveStable(output, json, path);
     }
 
-    private JsonObject createAnvilRecipe(String resultItem, String inputTag, int tier, String... rules) {
+    private JsonObject createAnvilRecipeWithItem(String resultItem, String inputItemId, int tier, String... rules) {
         JsonObject json = new JsonObject();
         json.addProperty("type", "tfc:anvil");
         json.addProperty("apply_bonus", true);
 
         JsonObject ingredient = new JsonObject();
-        ingredient.addProperty("tag", inputTag);
+        ingredient.addProperty("item", inputItemId);
         json.add("ingredient", ingredient);
 
         JsonObject result = new JsonObject();
@@ -172,5 +176,6 @@ public class TFCRecipeProvider implements DataProvider {
         return "TFC Recipes";
     }
 }
+
 
 

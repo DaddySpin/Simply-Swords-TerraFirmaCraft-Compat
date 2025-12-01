@@ -2,7 +2,7 @@
   "type": "tfc:anvil",
   "apply_bonus": true,
   "ingredient": {
-    "tag": "c:plates/copper"
+    "item": "tfc:metal/sheet/copper"
   },
   "result": {
     "count": 1,

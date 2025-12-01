@@ -2,7 +2,7 @@
   "type": "tfc:anvil",
   "apply_bonus": true,
   "ingredient": {
-    "tag": "c:plates/blue_steel"
+    "item": "tfc:metal/sheet/blue_steel"
   },
   "result": {
     "count": 1,

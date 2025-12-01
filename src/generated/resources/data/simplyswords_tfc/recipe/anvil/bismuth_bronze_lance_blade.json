@@ -2,7 +2,7 @@
   "type": "tfc:anvil",
   "apply_bonus": true,
   "ingredient": {
-    "tag": "c:double_plates/bismuth_bronze"
+    "item": "tfc:metal/double_sheet/bismuth_bronze"
   },
   "result": {
     "count": 1,

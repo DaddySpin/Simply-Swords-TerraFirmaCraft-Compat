@@ -2,7 +2,7 @@
   "type": "tfc:anvil",
   "apply_bonus": true,
   "ingredient": {
-    "tag": "c:plates/bronze"
+    "item": "tfc:metal/sheet/bronze"
   },
   "result": {
     "count": 1,

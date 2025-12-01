@@ -2,7 +2,7 @@
   "type": "tfc:anvil",
   "apply_bonus": true,
   "ingredient": {
-    "tag": "c:ingots/copper"
+    "item": "tfc:metal/ingot/copper"
   },
   "result": {
     "count": 1,
