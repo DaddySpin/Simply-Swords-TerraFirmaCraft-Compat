@@ -4,7 +4,7 @@ license="All Rights Reserved"
 
 [[mods]]
 modId="simplyswords_tfc"
-version="1.0.0"
+version="1.0.4"
 displayName="Simply Swords TFC Compat"
 authors="MaximeRubrum"
 description="Compatibility patch for TFC and Simply Swords"
