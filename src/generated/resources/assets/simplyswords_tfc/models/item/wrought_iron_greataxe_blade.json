@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "simplyswords_tfc:item/simply_swords_blades/blade_greataxe"
+    "layer0": "simplyswords_tfc:item/simply_swords_templates/blade_greataxe"
   }
 }

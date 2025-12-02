@@ -11,7 +11,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 /**
  * Generates item models for all TFC metal weapon variants.
- * Uses Simply Swords model templates as parents with custom blade/handle textures.
+ * Uses base template textures per weapon type with metal tinting applied dynamically.
  */
 public class ModItemModelProvider extends ItemModelProvider {
 
@@ -40,6 +40,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     /**
      * Registers a greathammer model using the custom tintable 3D template.
+     * Uses a single base template texture that gets tinted by metal color.
      */
     private void registerGreathammerModel(String weaponName) {
         getBuilder(weaponName)
@@ -48,11 +49,15 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     /**
-     * Registers a standard layered weapon model with blade (layer0) and handle (layer1).
+     * Registers a standard layered weapon model.
+     * Uses the existing blade template texture (layer0) that gets tinted by metal color.
+     * Handle (layer1) remains untinted.
      */
     private void registerStandardWeaponModel(String weaponName, SimplySwordsWeapons weapon) {
         ResourceLocation parentLoc = resolveParentModel(weapon.getModelParent());
         
+        // Use existing blade template texture - metal parts will be tinted via color handler
+        // The blade_{weapon}.png textures serve as base templates that get tinted
         getBuilder(weaponName)
                 .parent(new ModelFile.UncheckedModelFile(parentLoc))
                 .texture("layer0", ResourceLocation.fromNamespaceAndPath(SimplySwordsTFC.MOD_ID, "item/simply_swords_templates/blade_" + weapon.getName()))
@@ -61,7 +66,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     /**
      * Registers a blade item model (crafting component).
-     * Greathammer uses a 3D head model, others use 2D generated models.
+     * Uses the existing blade template texture that gets tinted by metal color.
      */
     private void registerBladeModel(String weaponName, SimplySwordsWeapons weapon) {
         String bladeName = weaponName + "_blade";
@@ -72,10 +77,10 @@ public class ModItemModelProvider extends ItemModelProvider {
                     .parent(getExistingFile(ResourceLocation.fromNamespaceAndPath(SimplySwordsTFC.MOD_ID, "item/template_greathammer_blade_tintable")))
                     .texture("texture", ResourceLocation.fromNamespaceAndPath(SimplySwordsTFC.MOD_ID, "item/simply_swords_templates/greathammer"));
         } else {
-            // Standard 2D blade model
+            // Standard 2D blade model - uses existing blade template that gets tinted
             getBuilder(bladeName)
                     .parent(getExistingFile(ResourceLocation.withDefaultNamespace("item/generated")))
-                    .texture("layer0", ResourceLocation.fromNamespaceAndPath(SimplySwordsTFC.MOD_ID, "item/simply_swords_blades/blade_" + weapon.getName()));
+                    .texture("layer0", ResourceLocation.fromNamespaceAndPath(SimplySwordsTFC.MOD_ID, "item/simply_swords_templates/blade_" + weapon.getName()));
         }
     }
 

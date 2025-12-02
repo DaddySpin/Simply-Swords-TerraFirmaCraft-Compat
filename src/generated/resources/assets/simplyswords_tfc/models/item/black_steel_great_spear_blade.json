@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "simplyswords_tfc:item/simply_swords_blades/blade_great_spear"
+    "layer0": "simplyswords_tfc:item/simply_swords_templates/blade_great_spear"
   }
 }
